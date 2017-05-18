@@ -17,7 +17,7 @@ namespace ChildrensActivityLog.Data.Repositories
 
         void Add(Child child);
         void Add(PlayEvent playEvent);
-        void Add(SleepingPeriod sleepingPeriod);
+        void AddSleepingPeriodByChildId(int childId, SleepingPeriod sleepingPeriod);
 
         void Update(PlayEvent playEvent);
         void Update(SleepingPeriod sleepingPeriod);
@@ -27,5 +27,7 @@ namespace ChildrensActivityLog.Data.Repositories
         void Remove(SleepingPeriod sleepingPeriod);
 
         void ClearAll();
+
+        bool Save();
     }
 }

@@ -63,6 +63,10 @@ namespace ChildrensActivityLog.WebApp
             {
                 cfg.CreateMap<Domain.Child, Models.ChildOnlyDto>();
                 cfg.CreateMap<Domain.Child, Models.ChildDto>();
+                cfg.CreateMap<Domain.SleepingPeriod, Models.SleepingPeriodDto>();
+                cfg.CreateMap<Domain.PlayEvent, Models.ChildrensPlayEventsDto>();
+                cfg.CreateMap<Models.ChildForCreationDto, Domain.Child>();
+                cfg.CreateMap<Models.SleepingPeriodForCreationDto, Domain.SleepingPeriod>();
             });
 
             app.UseMvc(routes =>

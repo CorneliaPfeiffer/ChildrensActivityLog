@@ -1,0 +1,14 @@
+﻿@model ChildrensActivityLog.Data.ChildrensActivityLogContext
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+<table>
+    @foreach (var item in Model.Children)
+    {
+
+        <tr>
+            <td>@item.FirstName</td>
+        </tr>
+    }
+</table>
+

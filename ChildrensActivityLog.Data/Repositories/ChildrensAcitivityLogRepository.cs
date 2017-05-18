@@ -10,10 +10,10 @@ namespace ChildrensActivityLog.Data.Repositories
     public class ChildrensAcitivityLogRepository : IChildrensAcitivityLogRepository
     {
         private ChildrensActivityLogContext _context = new ChildrensActivityLogContext();
-        //public ChildrensAcitivityLogRepository(ChildrensActivityLogContext context)
-        //{
-        //    _context = context;
-        //}
+       //public ChildrensAcitivityLogRepository(ChildrensActivityLogContext context)
+       // {
+       //     _context = context;
+       //}
 
         public void Add(Child child)
         {
@@ -27,10 +27,13 @@ namespace ChildrensActivityLog.Data.Repositories
             _context.SaveChanges();
         }
 
-        public void Add(SleepingPeriod sleepingPeriod)
+       
+
+        public void AddSleepingPeriodByChildId(int childId, SleepingPeriod sleepingPeriod)
         {
-            _context.SleepingPeriods.Add(sleepingPeriod);
-            _context.SaveChanges();
+            var child = GetChildById(childId, false, false);
+            child.SleepingPeriods.Add(sleepingPeriod);           
+            //_context.SaveChanges();
         }
 
         public void ClearAll()
@@ -44,14 +47,12 @@ namespace ChildrensActivityLog.Data.Repositories
 
         public int CountChildren()
         {
-        int i = 0;
-            return i;
+            return _context.Children.Count();
         }
 
         public int CountPlayEvents()
-        {
-            int i = 0;
-            return i;
+        {           
+            return _context.PlayEvents.Count();
         }
 
         public IEnumerable<Child> GetAllChildren()
@@ -116,6 +117,11 @@ namespace ChildrensActivityLog.Data.Repositories
         {
             _context.SleepingPeriods.Remove(sleepingPeriod);
             _context.SaveChanges();
+        }
+
+        public bool Save()
+        {
+            return (_context.SaveChanges() >= 0);
         }
 
         public void Update(PlayEvent playEvent)

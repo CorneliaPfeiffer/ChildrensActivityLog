@@ -35,43 +35,51 @@ namespace ChildrensActivityLog.WebApp.Controllers
             return Ok(result);
         }
 
-        //// GET: api/ChildrenApi/5
+        // GET: api/ChildrenApi/5
         //[HttpGet("{id}", Name = "Get")]
-        //public IActionResult GetChildById(int id, bool includePlayEvents = true, bool includeSleepingPeriods = true)
-        //{
-        //    var child = _iRepo.GetChildById(id, includePlayEvents, includeSleepingPeriods);
-        //    if (child == null)
-        //    {
-        //        return NotFound();
-        //    }
-        //    if(includeSleepingPeriods && includePlayEvents)
-        //    {
-        //        var childResult = AutoMapper.Mapper.Map<ChildDto>(child);
-        //        //new ChildDto()
-        //        //{
-        //        //    Id = child.Id,
-        //        //    DateOfBirth = child.DateOfBirth,
-        //        //    FirstName = child.FirstName,
-        //        //    LastName = child.LastName
-        //        //};
+        [HttpGet("{id}")]
+        public IActionResult GetChildById(int id, bool includePlayEvents = false, bool includeSleepingPeriods = false)
+        {
+            var child = _iRepo.GetChildById(id, includePlayEvents, includeSleepingPeriods);
+            if (child == null)
+            {
+                return NotFound();
+            }
+            if (includePlayEvents)
+            {
+                var childResult = AutoMapper.Mapper.Map<ChildDto>(child);
+                return new JsonResult(childResult);
+            }
+                if (includeSleepingPeriods)
+            {
+                //var childResult = new ChildDto()
+                //{
+                //    Id = child.Id,
+                //    DateOfBirth = child.DateOfBirth,
+                //    FirstName = child.FirstName,
+                //    LastName = child.LastName
+                //};
 
-        //        //foreach (var sPer in child.SleepingPeriods)
-        //        //{
-        //        // childResult.ChildrensPlayEvents.Add(
-        //        //        new SleepingPeriodDto()
-        //        //        {
-        //        //            Id = sPer.Id,
-        //        //            TypeOfSleepingPeriod = sPer.TypeOfSleepingPeriod as TypeOfSleepingPeriods,
-        //        //            From = sPer.From,
-        //        //            To = sPer.To
+                //foreach (var sPer in child.SleepingPeriods)
+                //{
+                // childResult.ChildrensPlayEvents.Add(
+                //        new SleepingPeriodDto()
+                //        {
+                //            Id = sPer.Id,
+                //            TypeOfSleepingPeriod = sPer.TypeOfSleepingPeriod as TypeOfSleepingPeriods,
+                //            From = sPer.From,
+                //            To = sPer.To
 
-        //        //        });
-        //        //}
-        //        return Ok(childResult);
-        //    }
-        //    var childOnlyResult = AutoMapper.Mapper.Map<ChildOnlyDto>(child);
-        //    return Ok(childOnlyResult);
-        //}
+                //        });
+                //}
+                var childResult = AutoMapper.Mapper.Map<ChildDto>(child);
+                return new JsonResult(childResult);
+            }
+            else { 
+            var childOnlyResult = AutoMapper.Mapper.Map<ChildOnlyDto>(child);
+            return new JsonResult(childOnlyResult);
+            }
+        }
 
         //[HttpPost("{id}")]
         //public IActionResult CreateChild(int id)

@@ -24,9 +24,9 @@ namespace ChildrensActivityLog.WebApp.Controllers
             {
                 name = item.FirstName;
             }
-            return Ok($"Die Kinder: {name} ");
-            
-            //return View();
+            //return Ok($"Die Kinder: {name} ");
+           // return Ok($"{result} ");
+            return View();
         }
 
         public IActionResult About()

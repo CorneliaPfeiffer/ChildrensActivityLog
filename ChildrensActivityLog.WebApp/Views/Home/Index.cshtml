@@ -3,7 +3,22 @@
     ViewData["Title"] = "Home Page";
 }
 
-@*<form action="Index" method="get">
-   
-    
-</form>*@
+<form action="@Url.Action("GetAllChildren", "Child")" method="get">
+    <input type="submit" name="submitGetAllChildren" value="Hämta alla barn" />    
+</form>
+
+<form action="@Url.Action("CountChildren", "Child")" method="get">
+    <input type="submit" name="submitGetAllChildren" value="Räkna alla barn" />
+</form>
+
+<form action="@Url.Action("CreateChild", "Child")" method="post">
+    <input type="submit" name="submitGetAllChildren" value="OK" />
+</form>
+
+<form action="@Url.Action("CreateSleepingPeriod", "SleepingPeriod")" method="post">
+    <h3>Lägg till en Sovperiod</h3>
+    <input type="number" name="childId" value="1" /><br />   
+    <input type="datetime" name="from" value="2010-01-01" /><br />
+    <input type="datetime" name="to" value="2010-01-01" /><br />
+    <input type="submit" name="submitCreateSleepingPeriod" value="OK" />
+</form>

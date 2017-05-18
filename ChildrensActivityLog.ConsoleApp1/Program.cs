@@ -15,35 +15,36 @@ namespace ChildrensActivityLog.ConsoleApp1
         //{
         //    _iRepo = iRepo;
         //}
-        private static void AddOneChild()
-        {
-            var child = new Child { DateOfBirth = Convert.ToDateTime("2002-01-22"), FirstName = "Sina", LastName = "Sinason" };
-            using (var context = new ChildrensActivityLogContext())
-            {
-                context.Children.Add(child);
-                context.SaveChanges();
-            }
-        }
-        private static void GetAllChildren()
-        { // IChildrensAcitivityLogRepository _iRepo = new ChildrensAcitivityLogRepository();
 
-            //return _iRepo.GetAllChildren().ToString();
-            using (var context = new ChildrensActivityLogContext())
-            {
-                var result = context.Children.ToList();
-                foreach (var item in result)
-                {
-                    Console.WriteLine(item.FirstName);
-                }
-            }
-        }
-                static void Main(string[] args)
+        //private static void AddOneChild()
+        //{
+        //    var child = new Child { DateOfBirth = Convert.ToDateTime("2002-01-22"), FirstName = "Sina", LastName = "Sinason" };
+        //    using (var context = new ChildrensActivityLogContext())
+        //    {
+        //        context.Children.Add(child);
+        //        context.SaveChanges();
+        //    }
+        //}
+        //private static void GetAllChildren()
+        //{ // IChildrensAcitivityLogRepository _iRepo = new ChildrensAcitivityLogRepository();
+
+        //    //return _iRepo.GetAllChildren().ToString();
+        //    using (var context = new ChildrensActivityLogContext())
+        //    {
+        //        var result = context.Children.ToList();
+        //        foreach (var item in result)
+        //        {
+        //            Console.WriteLine(item.FirstName);
+        //        }
+        //    }
+        //}
+               static void Main(string[] args)
         {
 
-            //AddOneChild();
-            GetAllChildren();
-            Console.WriteLine("Hello World!");
-            Console.ReadKey();
+        //    //AddOneChild();
+        //    GetAllChildren();
+        //    Console.WriteLine("Hello World!");
+        //    Console.ReadKey();
         }
     }
 }

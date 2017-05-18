@@ -7,6 +7,8 @@ namespace ChildrensActivityLog.Data
 
    
     {
+        //public ChildrensActivityLogContext(DbContextOptions<ChildrensActivityLogContext> options) : base(options)
+        //{  }
         
         public DbSet<Child> Children { get; set; }       
         public DbSet<SleepingPeriod> SleepingPeriods { get; set; }
