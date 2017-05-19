@@ -29,5 +29,8 @@
     <ProjectReference Include="..\ChildrensActivityLog.Data\ChildrensActivityLog.Data.csproj" />
     <ProjectReference Include="..\ChildrensActivityLog.Domain\ChildrensActivityLog.Domain.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ChildrensActivityLog\WebApp\Models\" />
+  </ItemGroup>
 
 </Project>

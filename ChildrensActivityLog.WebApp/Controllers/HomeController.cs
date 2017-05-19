@@ -15,25 +15,16 @@ namespace ChildrensActivityLog.WebApp.Controllers
         {
             _iRepo = iRepo;
         }
-        //private readonly ChildrensActivityLogContext _context;
+       
         public IActionResult Index()
         {
-            string name = "";
-           var result = _iRepo.GetAllChildren().ToList();
-            foreach (var item in result)
-            {
-                name = item.FirstName;
-            }
-            //return Ok($"Die Kinder: {name} ");
-           // return Ok($"{result} ");
             return View();
         }
 
-        public IActionResult About()
+        public IActionResult ClearDb()
         {
-            ViewData["Message"] = "Your application description page.";
-
-            return View();
+            _iRepo.ClearAll();
+            return Ok("All data raderad");
         }
 
         public IActionResult Contact()

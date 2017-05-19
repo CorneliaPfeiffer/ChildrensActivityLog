@@ -36,6 +36,11 @@ namespace ChildrensActivityLog.Data.Repositories
             //_context.SaveChanges();
         }
 
+        public bool ChildExists(int childId)
+        {
+            return _context.Children.Any(c => c.Id == childId);
+        }
+
         public void ClearAll()
         {           
             _context.Database.ExecuteSqlCommand("DELETE FROM SleepingPeriods");
@@ -53,6 +58,11 @@ namespace ChildrensActivityLog.Data.Repositories
         public int CountPlayEvents()
         {           
             return _context.PlayEvents.Count();
+        }
+
+        public void DeleteChild(Child child)
+        {
+            _context.Children.Remove(child);
         }
 
         public IEnumerable<Child> GetAllChildren()

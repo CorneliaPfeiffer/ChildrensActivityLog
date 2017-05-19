@@ -9,6 +9,8 @@ namespace ChildrensActivityLog.Data.Repositories
         IEnumerable<PlayEvent> GetAllPlayEvents();
         IEnumerable<SleepingPeriod> GetAllsleepingPeriodsByChildId();
 
+        bool ChildExists(int cityId);
+
         Child GetChildById(int id, bool includePlayEvents, bool includeSleepingPeriods);
         IEnumerable<PlayEvent> GetPlayEventsByChildId(int id);
 
@@ -26,6 +28,7 @@ namespace ChildrensActivityLog.Data.Repositories
         void Remove(PlayEvent playEvent);
         void Remove(SleepingPeriod sleepingPeriod);
 
+        void DeleteChild(Child child);
         void ClearAll();
 
         bool Save();
